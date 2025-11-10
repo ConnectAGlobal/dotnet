@@ -1,0 +1,7 @@
+﻿services:
+  connecta.api:
+    image: connecta.api
+    build:
+      context: .
+      dockerfile: ConnectA.API/Dockerfile
+
