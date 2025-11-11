@@ -6,4 +6,13 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Oracle.EntityFrameworkCore" Version="9.23.90" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ConnectA.Application\ConnectA.Application.csproj" />
+      <ProjectReference Include="..\ConnectA.Domain\ConnectA.Domain.csproj" />
+    </ItemGroup>
+
 </Project>
