@@ -1,5 +1,7 @@
+using ConnectA.API.Extensions;
 using ConnectA.Application.Configurations;
 using ConnectA.Infrastructure;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace ConnectA.API;
 
@@ -11,6 +13,7 @@ public static class Program
         var configs = builder.Configuration.Get<Settings>();
 
         builder.Services.AddInfrastructure(configs); 
+        builder.Services.AddHealthServices(configs.ConnectionStrings);
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -29,6 +32,11 @@ public static class Program
         app.UseAuthorization();
 
         app.MapControllers();
+        
+        app.MapHealthChecks("/api/health-check", new HealthCheckOptions()
+        {
+            ResponseWriter = HealthCheckExtensions.WriteResponse
+        });
 
         app.Run();
     }
