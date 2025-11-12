@@ -17,8 +17,8 @@ public static class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwagger(configs.Swagger);
+        builder.Services.AddVersioning();
         builder.Services.AddSwaggerGen();
-        
 
         var app = builder.Build();
 
