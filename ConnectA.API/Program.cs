@@ -16,6 +16,7 @@ public static class Program
         builder.Services.AddHealthServices(configs.ConnectionStrings);
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwagger(configs.Swagger);
         builder.Services.AddSwaggerGen();
         
 
