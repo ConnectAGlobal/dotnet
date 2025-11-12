@@ -1,5 +1,7 @@
 ﻿using ConnectA.Application.Configurations;
+using ConnectA.Application.Repositories;
 using ConnectA.Infrastructure.Persistence;
+using ConnectA.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -17,9 +19,16 @@ public static class DependencyInjection
 
         return services;
     }
+    
+    private static IServiceCollection AddRepositories(this IServiceCollection services)
+    {
+        services.AddScoped<IUserRepository, UserRepository>();
+        return services;
+    }
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, Settings settings)
     {
         services.AddDbContext(settings.ConnectionStrings);
+        services.AddRepositories();
         return services;
     }
 
