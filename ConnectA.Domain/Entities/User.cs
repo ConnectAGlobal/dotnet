@@ -15,6 +15,8 @@ public class User
     public DateTime CreatedAt { get; private set; }
     public bool Active { get; set; }
     
+    private User() {}
+    
     public User(string name, string email, string password, string type)
     {
         Id = Guid.NewGuid();
