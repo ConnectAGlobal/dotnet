@@ -2,7 +2,7 @@
 using ConnectA.API.DTOs.Response;
 using ConnectA.Domain.Entities;
 
-namespace ConnectA.Application.Mappers;
+namespace ConnectA.API.Mappers;
 
 public class UserMapper
 {

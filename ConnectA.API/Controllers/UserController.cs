@@ -1,6 +1,6 @@
 ﻿using Asp.Versioning;
 using ConnectA.API.DTOs.Request;
-using ConnectA.Application.Mappers;
+using ConnectA.API.Mappers;
 using ConnectA.Application.UseCases.Users;
 using Microsoft.AspNetCore.Mvc;
 
