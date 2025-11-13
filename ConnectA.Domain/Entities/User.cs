@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
 using ConnectA.Domain.Enums;
+using ConnectA.Domain.Helper;
 
 namespace ConnectA.Domain.Entities;
 
@@ -24,16 +25,7 @@ public class User
         Name = name;
         Email = email;
         EncryptPassword(password);
-        try
-        {
-            Type = Enum.Parse<UserType>(type, true);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-        
+        TransformInEnum.ParseEnum<UserType>(type);
         CreatedAt = DateTime.UtcNow;
         Active = true;
     }
