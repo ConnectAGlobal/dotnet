@@ -12,4 +12,9 @@ public class UserRepository(OracleContext context) : IUserRepository
         await context.SaveChangesAsync();
         return user;
     }
+    
+    public async Task<User?> GetUserByIdAsync(Guid userId)
+    {
+        return await context.Users.FindAsync(userId);
+    }
 }

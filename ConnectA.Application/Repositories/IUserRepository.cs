@@ -5,4 +5,5 @@ namespace ConnectA.Application.Repositories;
 public interface IUserRepository
 {
     Task<User> CreateUser(User user);
+    Task<User?> GetUserByIdAsync(Guid userId);
 }
