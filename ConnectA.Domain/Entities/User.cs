@@ -14,6 +14,7 @@ public class User
     public UserType Type { get; set; }
     public DateTime CreatedAt { get; private set; }
     public bool Active { get; set; }
+    public Profile Profile { get; set; }
     
     private User() {}
     
