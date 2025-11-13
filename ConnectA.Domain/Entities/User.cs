@@ -25,7 +25,7 @@ public class User
         Name = name;
         Email = email;
         EncryptPassword(password);
-        TransformInEnum.ParseEnum<UserType>(type);
+        Type = TransformInEnum.ParseEnum<UserType>(type);
         CreatedAt = DateTime.UtcNow;
         Active = true;
     }
