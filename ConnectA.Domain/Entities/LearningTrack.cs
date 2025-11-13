@@ -13,6 +13,8 @@ public class LearningTrack
     public User Senior { get; set; }
     public DateTime CreatedAt { get; set; }
     
+    public virtual ICollection<TrackStage> Stages { get; set; } = new List<TrackStage>();
+    
     private LearningTrack() {}
     
     public LearningTrack(string name, string description, string level, Guid seniorId)
