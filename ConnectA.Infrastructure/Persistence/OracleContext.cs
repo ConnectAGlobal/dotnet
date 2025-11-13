@@ -8,9 +8,11 @@ public class OracleContext(DbContextOptions<OracleContext> options) : DbContext(
 {
     
     public DbSet<User> Users { get; set; }
+    public DbSet<Profile> Profiles { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new UserMapping());
+        modelBuilder.ApplyConfiguration(new ProfileMapping());
     }
 }
