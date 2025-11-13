@@ -23,7 +23,6 @@ public class UserController(
             return BadRequest(ModelState);
         
         var user = UserMapper.ToEntity(dto);
-        Console.Write("Teste");
         var createdUser = await createUserUseCase.CreateUser(user);
         var response = UserMapper.ToResponse(createdUser);
         return CreatedAtAction(nameof(CreateUser), new { id = response.Id }, response);
