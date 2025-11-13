@@ -15,7 +15,8 @@ public class User
     public UserType Type { get; set; }
     public DateTime CreatedAt { get; private set; }
     public bool Active { get; set; }
-    public Profile Profile { get; set; }
+    public virtual Profile Profile { get; set; }
+    public virtual ICollection<LearningTrack> LearningTracks { get; set; }
     
     private User() {}
     
