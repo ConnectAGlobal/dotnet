@@ -1,6 +1,6 @@
 ﻿namespace ConnectA.Domain.Enums;
 
-public enum Nivel
+public enum Level
 {
     BEGINNER = 1,
     INTERMEDIATE = 2,

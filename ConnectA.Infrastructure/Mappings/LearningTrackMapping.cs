@@ -26,8 +26,8 @@ public class LearningTrackMapping : IEntityTypeConfiguration<LearningTrack>
             .HasMaxLength(2000)
             .IsRequired();
         
-        builder.Property(e => e.Nivel)
-            .HasColumnName("nivel")
+        builder.Property(e => e.Level)
+            .HasColumnName("level")
             .HasConversion<string>()
             .IsRequired();
         
