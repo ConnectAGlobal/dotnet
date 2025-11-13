@@ -16,6 +16,7 @@ public class ProfileController(CreateProfileUseCase createProfileUseCase) : Cont
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> CreateProfile([FromBody] ProfileRequestDTO dto)
     {
         try
