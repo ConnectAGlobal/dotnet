@@ -14,6 +14,11 @@ public class CreateProfileUseCase(IProfileRepository profileRepository, IUserRep
             throw new UserNotFoundException(profile.UserId);
         }
         
+        if (user.Profile != null)
+        {
+            throw new ProfileAlreadyExistsException(user.Id);
+        }
+        
         profile.User = user;
         return await profileRepository.CreateProfileAsync(profile);
     }

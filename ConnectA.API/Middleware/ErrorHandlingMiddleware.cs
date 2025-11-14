@@ -23,7 +23,7 @@ public class ErrorHandlingMiddleware(RequestDelegate next)
         
         switch (exception)
         {
-            case UserAlreadyExistsException:
+            case UserAlreadyExistsException or ProfileAlreadyExistsException:
                 statusCode = StatusCodes.Status409Conflict;
                 break;
 
