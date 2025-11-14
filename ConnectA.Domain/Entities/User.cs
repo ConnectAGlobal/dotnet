@@ -18,6 +18,8 @@ public class User
     public virtual Profile Profile { get; set; }
     public virtual ICollection<LearningTrack> LearningTracksAsSenior { get; set; } = new List<LearningTrack>();
     public virtual ICollection<LearningTrackUser> LearningTracksFolows { get; set; } = new List<LearningTrackUser>();
+    public virtual ICollection<MentorshipMatch> MatchesAsJunior { get; set; } = new List<MentorshipMatch>();
+    public virtual ICollection<MentorshipMatch> MatchesAsSenior { get; set; } = new List<MentorshipMatch>();
     
     private User() {}
     
