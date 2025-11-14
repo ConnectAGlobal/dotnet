@@ -36,7 +36,7 @@ public class ProfileControllerTest(ApiFactory factory) : IClassFixture<ApiFactor
     
     private async Task<Guid> CreateUserAsync()
     {
-        var userDto = new UserRequestDTO("Test User", $"test{Guid.NewGuid()}@test.com", "123456@aS", "Senior");
+        var userDto = new UserRequestDTO("Test User", $"test{Guid.NewGuid()}@test.com", "123456@aS", "SENIOR");
 
         var response = await _client.PostAsJsonAsync("/api/v1/users", userDto);
         if (!response.IsSuccessStatusCode)

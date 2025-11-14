@@ -26,7 +26,7 @@ public class UserRequestValidator : AbstractValidator<UserRequestDTO>
 
         RuleFor(x => x.Type)
             .NotEmpty().WithMessage("Type is required")
-            .Must(type => type is "Jovem" or "Senior")
+            .Must(type => type.ToLower() is "jovem" or "senior")
             .WithMessage("Type must be one of the following: Jovem, Senior");
         
     }
