@@ -9,7 +9,8 @@ namespace ConnectA.API.Controllers;
 
 [ApiController]
 [Route("api/v{version:apiVersion}/profiles")]
-[Produces("application/rjson")]
+[Produces("application/json")]
+
 [ApiVersion(1.0)]
 public class ProfileController(CreateProfileUseCase createProfileUseCase) : ControllerBase
 {

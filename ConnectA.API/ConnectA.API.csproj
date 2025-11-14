@@ -32,4 +32,8 @@
       <ProjectReference Include="..\ConnectA.Infrastructure\ConnectA.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="appsettings.Test.json" />
+    </ItemGroup>
+
 </Project>
