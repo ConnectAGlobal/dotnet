@@ -27,6 +27,8 @@ public static class Program
 
         var app = builder.Build();
 
+        app.UseErrorHandling();
+
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
