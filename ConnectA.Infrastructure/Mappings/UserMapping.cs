@@ -47,5 +47,19 @@ public class UserMapping : IEntityTypeConfiguration<User>
         builder.Property(e => e.PasswordSalt)
             .HasColumnName("password_salt")
             .IsRequired();
+        
+        builder.HasOne(u => u.Profile)
+            .WithOne(p => p.User)
+            .HasForeignKey<Profile>(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.HasMany(u => u.LearningTracksFolows)
+            .WithOne(l => l.User)
+            .HasForeignKey(l => l.UserId);
+        
+        builder.HasMany<LearningTrack>()
+            .WithOne(t => t.Senior)
+            .HasForeignKey(t => t.SeniorId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
