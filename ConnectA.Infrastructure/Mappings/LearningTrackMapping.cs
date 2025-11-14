@@ -43,5 +43,9 @@ public class LearningTrackMapping : IEntityTypeConfiguration<LearningTrack>
             .WithMany(u => u.LearningTracksAsSenior)
             .HasForeignKey(e => e.SeniorId)
             .OnDelete(DeleteBehavior.Cascade);
+        
+        builder.HasMany(x => x.Stages)
+            .WithOne(s => s.LearningTrack)
+            .HasForeignKey(s => s.LearningTrackId);
     }
 }
