@@ -11,6 +11,7 @@ public class MentorshipMatch
     
     public virtual User Junior { get; set; } 
     public virtual User Senior { get; set; } 
+    public virtual ICollection<MentorshipChallenge> Challenges { get; set; } = new List<MentorshipChallenge>();
     
     private MentorshipMatch() {}
     
