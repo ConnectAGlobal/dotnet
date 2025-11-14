@@ -40,7 +40,7 @@ public class LearningTrackMapping : IEntityTypeConfiguration<LearningTrack>
             .IsRequired();
         
         builder.HasOne(e => e.Senior)
-            .WithMany(u => u.LearningTracks)
+            .WithMany(u => u.LearningTracksAsSenior)
             .HasForeignKey(e => e.SeniorId)
             .OnDelete(DeleteBehavior.Cascade);
     }
