@@ -34,6 +34,14 @@ public class MentorshipMatchMapping : IEntityTypeConfiguration<MentorshipMatch>
             .WithMany(u => u.MatchesAsSenior)
             .HasForeignKey(mm => mm.SeniorId)
             .OnDelete(DeleteBehavior.Restrict);
+        
+        builder.HasMany(x => x.Challenges)
+            .WithOne(c => c.MentorshipMatch)
+            .HasForeignKey(c => c.MentorshipMatchId);
+
+        builder.HasMany(x => x.Evaluations)
+            .WithOne(e => e.MentorshipMatch)
+            .HasForeignKey(e => e.MentorshipMatchId);
     }
     
 }
