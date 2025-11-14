@@ -9,7 +9,6 @@ public class MentorshipChallenge
 
     public string Title { get; set; } 
     public string Description { get; set; }
-    public bool GeneratedByAI { get; set; }
     public Status Status { get; set; }
     public DateTime CreatedAt { get; set; }
     
@@ -17,13 +16,12 @@ public class MentorshipChallenge
     
     private MentorshipChallenge() {}
     
-    public MentorshipChallenge(Guid mentorshipMatchId, string title, string description, bool generatedByAI)
+    public MentorshipChallenge(Guid mentorshipMatchId, string title, string description)
     {
         Id = Guid.NewGuid();
         MentorshipMatchId = mentorshipMatchId;
         Title = title;
         Description = description;
-        GeneratedByAI = generatedByAI;
         Status = Status.IN_PROGRESS;
         CreatedAt = DateTime.UtcNow;
     }

@@ -22,10 +22,7 @@ public class MentorshipChallengeMapping : IEntityTypeConfiguration<MentorshipCha
 
         builder.Property(mc => mc.Description)
             .IsRequired();
-
-        builder.Property(mc => mc.GeneratedByAI)
-            .IsRequired();
-
+        
         builder.Property(mc => mc.Status)
             .IsRequired();
 
