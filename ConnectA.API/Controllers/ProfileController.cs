@@ -19,26 +19,16 @@ public class ProfileController(CreateProfileUseCase createProfileUseCase) : Cont
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> CreateProfile([FromBody] ProfileRequestDTO dto)
     {
-        try
-        {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+        
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
 
-            var profile = ProfileMapper.ToEntity(dto);
+        var profile = ProfileMapper.ToEntity(dto);
 
-            var createdProfile = await createProfileUseCase.CreateProfile(profile);
+        var createdProfile = await createProfileUseCase.CreateProfile(profile);
 
-            var response = ProfileMapper.ToResponse(createdProfile);
-            return CreatedAtAction(nameof(CreateProfile), new { id = response.Id }, response);
-        }
-        catch (KeyNotFoundException e)
-        {
-            return BadRequest(e.Message);
-        }
-        catch (Exception e)
-        {
-            return StatusCode(StatusCodes.Status500InternalServerError, e.Message);
-        }
+        var response = ProfileMapper.ToResponse(createdProfile);
+        return CreatedAtAction(nameof(CreateProfile), new { id = response.Id }, response);
         
     }
 }

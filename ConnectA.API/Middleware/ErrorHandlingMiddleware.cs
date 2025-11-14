@@ -30,7 +30,11 @@ public class ErrorHandlingMiddleware(RequestDelegate next)
             case ArgumentException:
                 statusCode = StatusCodes.Status400BadRequest;
                 break;
-
+            
+            case UserNotFoundException:
+                statusCode = StatusCodes.Status404NotFound;
+                break;
+            
             case UnauthorizedAccessException:
                 statusCode = StatusCodes.Status401Unauthorized;
                 break;
