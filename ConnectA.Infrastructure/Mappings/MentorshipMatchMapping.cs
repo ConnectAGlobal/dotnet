@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConnectA.Infrastructure.Mappings;
 
-public class MentorshipMatchMapping : IEntityTypeConfiguration<MentorshipMatch>
+internal class MentorshipMatchMapping : IEntityTypeConfiguration<MentorshipMatch>
 {
     public void Configure(Microsoft.EntityFrameworkCore.Metadata.Builders.EntityTypeBuilder<MentorshipMatch> builder)
     {

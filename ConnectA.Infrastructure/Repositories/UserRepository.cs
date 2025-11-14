@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ConnectA.Infrastructure.Repositories;
 
-public class UserRepository(OracleContext context) : IUserRepository
+internal class UserRepository(OracleContext context) : IUserRepository
 {
     public async Task<User> CreateUser(User user)
     {

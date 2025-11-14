@@ -4,7 +4,7 @@ using ConnectA.Infrastructure.Persistence;
 
 namespace ConnectA.Infrastructure.Repositories;
 
-public class ProfileRepository(OracleContext context) : IProfileRepository
+internal class ProfileRepository(OracleContext context) : IProfileRepository
 {
     public async Task<Profile> CreateProfileAsync(Profile profile)
     {

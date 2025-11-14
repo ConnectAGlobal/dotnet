@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConnectA.Infrastructure.Mappings;
 
-public class UserMapping : IEntityTypeConfiguration<User>
+internal class UserMapping : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {

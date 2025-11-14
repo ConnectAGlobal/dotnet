@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConnectA.Infrastructure.Mappings;
 
-public class LearningTrackMapping : IEntityTypeConfiguration<LearningTrack>
+internal class LearningTrackMapping : IEntityTypeConfiguration<LearningTrack>
 {
     public void Configure(EntityTypeBuilder<LearningTrack> builder)
     {

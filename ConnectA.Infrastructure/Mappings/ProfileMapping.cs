@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConnectA.Infrastructure.Mappings;
 
-public class ProfileMapping : IEntityTypeConfiguration<Profile>
+internal class ProfileMapping : IEntityTypeConfiguration<Profile>
 {
     public void Configure(EntityTypeBuilder<Profile> builder)
     {

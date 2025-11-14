@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConnectA.Infrastructure.Mappings;
 
-public class MentorshipChallengeMapping : IEntityTypeConfiguration<MentorshipChallenge>
+internal class MentorshipChallengeMapping : IEntityTypeConfiguration<MentorshipChallenge>
 {
     public void Configure(EntityTypeBuilder<MentorshipChallenge> builder)
     {

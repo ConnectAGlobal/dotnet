@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConnectA.Infrastructure.Mappings;
 
-public class TrackStageMapping : IEntityTypeConfiguration<TrackStage>
+internal class TrackStageMapping : IEntityTypeConfiguration<TrackStage>
 {
     public void Configure(EntityTypeBuilder<TrackStage> builder)
     {

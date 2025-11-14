@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConnectA.Infrastructure.Mappings;
 
-public class MentorshipEvaluationMapping : IEntityTypeConfiguration<MentorshipEvaluation>
+internal class MentorshipEvaluationMapping : IEntityTypeConfiguration<MentorshipEvaluation>
 {
     public void Configure(EntityTypeBuilder<MentorshipEvaluation> builder)
     {
