@@ -16,7 +16,8 @@ public class User
     public DateTime CreatedAt { get; private set; }
     public bool Active { get; set; }
     public virtual Profile Profile { get; set; }
-    public virtual ICollection<LearningTrack> LearningTracks { get; set; }
+    public virtual ICollection<LearningTrack> LearningTracksAsSenior { get; set; } = new List<LearningTrack>();
+    public virtual ICollection<LearningTrackUser> LearningTracksFolows { get; set; } = new List<LearningTrackUser>();
     
     private User() {}
     

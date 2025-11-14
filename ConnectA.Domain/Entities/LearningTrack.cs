@@ -14,6 +14,7 @@ public class LearningTrack
     public DateTime CreatedAt { get; set; }
     
     public virtual ICollection<TrackStage> Stages { get; set; } = new List<TrackStage>();
+    public virtual ICollection<LearningTrackUser> Users { get; set; } = new List<LearningTrackUser>();
     
     private LearningTrack() {}
     
