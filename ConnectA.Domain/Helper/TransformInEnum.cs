@@ -1,6 +1,6 @@
 ﻿namespace ConnectA.Domain.Helper;
 
-public class TransformInEnum
+public static class TransformInEnum
 {
     public static T ParseEnum<T>(string value) where T : struct, Enum
     {
