@@ -23,6 +23,7 @@ public static class DependencyInjection
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IProfileRepository, ProfileRepository>();
         return services;
     }
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, Settings settings)
