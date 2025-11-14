@@ -1,4 +1,5 @@
 ﻿using ConnectA.Domain.Enums;
+using ConnectA.Domain.Helper;
 
 namespace ConnectA.Domain.Entities;
 
@@ -17,13 +18,13 @@ public class TrackStage
     
     private TrackStage() {}
     
-    public TrackStage(Guid learningTrackId, string title, string description, ActivityType activityType, int order, int estimatedDuration, string? resourceLink)
+    public TrackStage(Guid learningTrackId, string title, string description, string activityType, int order, int estimatedDuration, string? resourceLink)
     {
         Id = Guid.NewGuid();
         LearningTrackId = learningTrackId;
         Title = title;
         Description = description;
-        ActivityType = activityType;
+        ActivityType = TransformInEnum.ParseEnum<ActivityType>(activityType);
         Order = order;
         EstimatedDuration = estimatedDuration;
         ResourceLink = resourceLink;
