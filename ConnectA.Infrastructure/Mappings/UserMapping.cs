@@ -38,6 +38,7 @@ public class UserMapping : IEntityTypeConfiguration<User>
         
         builder.Property(e => e.Active)
             .HasColumnName("active")
+            .HasConversion<int>()
             .IsRequired();
         
         builder.Property(e => e.PasswordHash)
