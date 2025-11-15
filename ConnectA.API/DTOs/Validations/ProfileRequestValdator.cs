@@ -8,8 +8,6 @@ public class ProfileRequestValdator : AbstractValidator<ProfileRequestDTO>
 
     public ProfileRequestValdator()
     {
-        RuleFor(x => x.UserId)
-            .NotEmpty().WithMessage("O ID do usuário é obrigatório.");
 
         RuleFor(x => x.Biography)
             .NotEmpty().WithMessage("A biografia é obrigatória.")

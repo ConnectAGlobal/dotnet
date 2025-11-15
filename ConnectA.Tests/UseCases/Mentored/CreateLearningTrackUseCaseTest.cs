@@ -57,7 +57,8 @@ public class CreateLearningTrackUseCaseTest
     [Fact]
     public async Task CreateLearningTrack_WhenUserIsNotSenior_ShouldThrowInvalidSeniorRoleException()
     {
-        var user = new User("Tester", "Tester@gmail.com", "123456789", "Jovem");
+        var profile = new Profile("Test Bio", "Programação, Engenheiro de Software, Git, ", "Trabalho .....", "Conseguir vaga .....", "SP", "en, pt");
+        var user = new User("Tester", "Tester@gmail.com", "123456789", "Jovem", profile);
         
         _userRepository.Setup(r => r.GetUserByIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(user);
@@ -84,7 +85,8 @@ public class CreateLearningTrackUseCaseTest
     [Fact]
     public async Task CreateLearningTrack_WhenValidLearningTrack_ShouldCreateLearningTrackSuccessfully()
     {
-        var user = new User("Tester", "Tester@gmail.com", "123456789", "Senior");
+        var profile = new Profile("Test Bio", "Programação, Engenheiro de Software, Git, ", "Trabalho .....", "Conseguir vaga .....", "SP", "en, pt");
+        var user = new User("Tester", "Tester@gmail.com", "123456789", "Senior", profile);
         
         _userRepository.Setup(userRepo => userRepo.GetUserByIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(user);

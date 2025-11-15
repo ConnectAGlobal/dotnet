@@ -6,10 +6,9 @@ namespace ConnectA.Infrastructure.Repositories;
 
 internal class ProfileRepository(OracleContext context) : IProfileRepository
 {
-    public async Task<Profile> CreateProfileAsync(Profile profile)
+    public async Task CreateProfileAsync(Profile profile)
     {
         await context.Profiles.AddRangeAsync(profile);
         await context.SaveChangesAsync();
-        return profile;
     }
 }

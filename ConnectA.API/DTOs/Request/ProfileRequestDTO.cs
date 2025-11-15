@@ -3,7 +3,6 @@
 namespace ConnectA.API.DTOs.Request;
 
 public class ProfileRequestDTO(
-    Guid userId,
     string biography,
     string skills,
     string experience,
@@ -11,8 +10,6 @@ public class ProfileRequestDTO(
     string location,
     string lenguages)
 {
-    [JsonPropertyName("userId")]
-    public Guid UserId { get; init; } = userId;
     [JsonPropertyName("biography")]
     public string Biography { get; init; } = biography;
     [JsonPropertyName("skills")]

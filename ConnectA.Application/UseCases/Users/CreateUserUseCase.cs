@@ -4,7 +4,7 @@ using ConnectA.Domain.Exceptions;
 
 namespace ConnectA.Application.UseCases.Users;
 
-public class CreateUserUseCase(IUserRepository userRepository)
+public class CreateUserUseCase(IUserRepository userRepository, IProfileRepository profileRepository)
 {
     public async Task<User> CreateUser(User user)
     {
@@ -13,6 +13,8 @@ public class CreateUserUseCase(IUserRepository userRepository)
         {
            throw new UserAlreadyExistsException(user.Email);  
         }
-        return await userRepository.CreateUser(user);
+        var userCreated = await userRepository.CreateUser(user);
+        await profileRepository.CreateProfileAsync(user.Profile);
+        return userCreated;
     }
 }

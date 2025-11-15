@@ -29,4 +29,8 @@
       <ProjectReference Include="..\ConnectA.Domain\ConnectA.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+    </ItemGroup>
+
 </Project>

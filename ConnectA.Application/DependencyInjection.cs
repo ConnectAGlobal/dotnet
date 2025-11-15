@@ -1,4 +1,4 @@
-﻿using ConnectA.Application.UseCases.Profiles;
+﻿using ConnectA.Application.UseCases.Mentored;
 using ConnectA.Application.UseCases.Users;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,7 +9,7 @@ public static class DependencyInjection
     public static IServiceCollection AddUseCases(this IServiceCollection services)
     {
         services.AddScoped<CreateUserUseCase>();
-        services.AddScoped<CreateProfileUseCase>();
+        services.AddScoped<CreateLearningTrackUseCase>();
         return services;
     }
 }

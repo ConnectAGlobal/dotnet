@@ -14,16 +14,20 @@ public class Profile
     
     private Profile() {}
     
-    public Profile(Guid userId, string biography, string skills, string experience, string objectives, string location, string lenguages)
+    public Profile(string biography, string skills, string experience, string objectives, string location, string lenguages)
     {
         Id = Guid.NewGuid();
-        UserId = userId;
         Biography = biography;
         Skills = skills;
         Experience = experience;
         Objectives = objectives;
         Location = location;
         Lenguages = lenguages;
+    }
+    
+    public void SetUserId(Guid userId)
+    {
+        UserId = userId;
     }
     
 }

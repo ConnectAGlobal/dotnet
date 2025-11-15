@@ -8,11 +8,13 @@ public class UserMapper
 {
     public static User ToEntity(UserRequestDTO dto)
     {
-        return new User(dto.Name, dto.Email, dto.Password, dto.Type);
+        var profile = ProfileMapper.ToEntity(dto.Profile);
+        return new User(dto.Name, dto.Email, dto.Password, dto.Type, profile);
     }
 
     public static UserResponseDTO ToResponse(User user)
     {
-        return new UserResponseDTO(user.Id, user.Name, user.Email, user.Type.ToString(), user.CreatedAt, user.Active);
+        var profile = ProfileMapper.ToResponse(user.Profile);
+        return new UserResponseDTO(user.Id, user.Name, user.Email, user.Type.ToString(), user.CreatedAt, user.Active, profile);
     }
 }

@@ -4,5 +4,5 @@ namespace ConnectA.Application.Repositories;
 
 public interface IProfileRepository
 {
-    Task<Profile> CreateProfileAsync(Profile profile);
+    Task CreateProfileAsync(Profile profile);
 }

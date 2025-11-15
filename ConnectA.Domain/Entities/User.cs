@@ -23,7 +23,7 @@ public class User
     
     private User() {}
     
-    public User(string name, string email, string password, string type)
+    public User(string name, string email, string password, string type, Profile profile)
     {
         Id = Guid.NewGuid();
         Name = name;
@@ -32,6 +32,14 @@ public class User
         Type = TransformInEnum.ParseEnum<UserType>(type);
         CreatedAt = DateTime.UtcNow;
         Active = true;
+        AddProfile(profile);
+    }
+    
+    private void AddProfile(Profile profile)
+    {
+        Profile = profile;
+        profile.SetUserId(Id);
+        profile.User = this;
     }
     
     private void EncryptPassword(string password)
