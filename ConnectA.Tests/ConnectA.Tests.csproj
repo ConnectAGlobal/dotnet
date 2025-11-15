@@ -26,6 +26,7 @@
     <ItemGroup>
       <ProjectReference Include="..\ConnectA.API\ConnectA.API.csproj" />
       <ProjectReference Include="..\ConnectA.Application\ConnectA.Application.csproj" />
+      <ProjectReference Include="..\ConnectA.Domain\ConnectA.Domain.csproj" />
     </ItemGroup>
 
 </Project>

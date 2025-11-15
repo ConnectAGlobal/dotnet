@@ -18,7 +18,7 @@ public class LearningTrack
     
     private LearningTrack() {}
     
-    public LearningTrack(string name, string description, string level, Guid seniorId)
+    public LearningTrack(string name, string description, string level, Guid seniorId, ICollection<TrackStage> stages)
     {
         Id = Guid.NewGuid();
         Name = name;
@@ -26,6 +26,17 @@ public class LearningTrack
         Level = TransformInEnum.ParseEnum<Level>(level);
         SeniorId = seniorId;
         CreatedAt = DateTime.UtcNow;
+        AddStage(stages);
+    }
+    
+    private void AddStage(ICollection<TrackStage> stages)
+    {
+        if (stages.Count < 1)
+            throw new ArgumentException("A learning track must have at least one stage.");
+        
+        foreach (var stage in stages)
+            stage.LearningTrackId = Id;
+        Stages = stages;
     }
     
 }

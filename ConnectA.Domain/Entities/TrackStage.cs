@@ -18,15 +18,19 @@ public class TrackStage
     
     private TrackStage() {}
     
-    public TrackStage(Guid learningTrackId, string title, string description, string activityType, int order, int estimatedDuration, string? resourceLink)
+    public TrackStage(string title, string description, string activityType, int order, int estimatedDuration, string? resourceLink)
     {
         Id = Guid.NewGuid();
-        LearningTrackId = learningTrackId;
         Title = title;
         Description = description;
         ActivityType = TransformInEnum.ParseEnum<ActivityType>(activityType);
         Order = order;
         EstimatedDuration = estimatedDuration;
         ResourceLink = resourceLink;
+    }
+    
+    public void SetLearningTrackId(Guid learningTrackId)
+    {
+        LearningTrackId = learningTrackId;
     }
 }
