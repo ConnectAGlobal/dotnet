@@ -2,6 +2,7 @@
 using ConnectA.Application.UseCases.Mentored;
 using ConnectA.Domain.Entities;
 using ConnectA.Domain.Exceptions;
+using ConnectA.Tests.Builders;
 using JetBrains.Annotations;
 using Moq;
 
@@ -34,19 +35,8 @@ public class CreateLearningTrackUseCaseTest
     {
         _userRepository.Setup(repo => repo.GetUserByIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync((User?) null);
-        
-        var learningTrack = new LearningTrack(
-            "Track Name", 
-            "Track Description", 
-            "INTERMEDIATE", 
-            Guid.Empty, 
-            new List<TrackStage>(){new (
-                "Stage 1", 
-                "Stage Description", 
-                "CHALLENGE", 
-                1, 
-                30, 
-                "http://example.com")});
+
+        var learningTrack = LearningTrackBuilder.CreateValidTrack(Guid.Empty);
         
         Assert.ThrowsAsync<UserNotFoundException>(async () =>
         {
@@ -57,24 +47,13 @@ public class CreateLearningTrackUseCaseTest
     [Fact]
     public async Task CreateLearningTrack_WhenUserIsNotSenior_ShouldThrowInvalidSeniorRoleException()
     {
-        var profile = new Profile("Test Bio", "Programação, Engenheiro de Software, Git, ", "Trabalho .....", "Conseguir vaga .....", "SP", "en, pt");
-        var user = new User("Tester", "Tester@gmail.com", "123456789", "Jovem", profile);
+        var profile = ProfileBuilder.CreateValidProfile();
+        var user = UserBuilder.CreateValidJovem(profile);
         
         _userRepository.Setup(r => r.GetUserByIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(user);
 
-        var learningTrack = new LearningTrack(
-            "Track Name", 
-            "Track Description", 
-            "INTERMEDIATE", 
-            Guid.Empty, 
-            new List<TrackStage>(){new (
-                "Stage 1", 
-                "Stage Description", 
-                "CHALLENGE", 
-                1, 
-                30, 
-                "http://example.com")});
+        var learningTrack = LearningTrackBuilder.CreateValidTrack(user.Id);
 
         await Assert.ThrowsAsync<InvalidSeniorRoleException>(async () =>
         {
@@ -85,24 +64,13 @@ public class CreateLearningTrackUseCaseTest
     [Fact]
     public async Task CreateLearningTrack_WhenValidLearningTrack_ShouldCreateLearningTrackSuccessfully()
     {
-        var profile = new Profile("Test Bio", "Programação, Engenheiro de Software, Git, ", "Trabalho .....", "Conseguir vaga .....", "SP", "en, pt");
-        var user = new User("Tester", "Tester@gmail.com", "123456789", "Senior", profile);
+        var profile = ProfileBuilder.CreateValidProfile();
+        var user = UserBuilder.CreateValidSenior(profile);
         
         _userRepository.Setup(userRepo => userRepo.GetUserByIdAsync(It.IsAny<Guid>()))
             .ReturnsAsync(user);
         
-        var learningTrack = new LearningTrack(
-            "Track Name", 
-            "Track Description", 
-            "INTERMEDIATE", 
-            Guid.Empty, 
-            new List<TrackStage>(){new (
-                "Stage 1", 
-                "Stage Description", 
-                "CHALLENGE", 
-                1, 
-                30, 
-                "http://example.com")});
+        var learningTrack = LearningTrackBuilder.CreateValidTrack(user.Id);
         
         _learningTrackRepository
             .Setup(r => r.CreateLearningTrack(It.IsAny<LearningTrack>()))
