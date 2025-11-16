@@ -15,7 +15,7 @@ public class Profile
     private Profile() {}
     
     public Profile(string biography, string skills, string experience, string objectives, string location, string lenguages)
-    {
+    { 
         Id = Guid.NewGuid();
         Biography = biography;
         Skills = skills;
@@ -28,6 +28,16 @@ public class Profile
     public void SetUserId(Guid userId)
     {
         UserId = userId;
+    }
+    
+    public void UpdateProfile(Profile profile)
+    {
+        Biography = profile.Biography;
+        Skills = profile.Skills;
+        Experience = profile.Experience;
+        Objectives = profile.Objectives;
+        Location = profile.Location;
+        Lenguages = profile.Lenguages;
     }
     
 }

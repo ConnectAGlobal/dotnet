@@ -11,4 +11,10 @@ internal class ProfileRepository(OracleContext context) : IProfileRepository
         await context.Profiles.AddRangeAsync(profile);
         await context.SaveChangesAsync();
     }
+    
+    public async Task UpdateProfileAsync(Profile profile)
+    {
+        context.Profiles.Update(profile);
+        await context.SaveChangesAsync();
+    }
 }
