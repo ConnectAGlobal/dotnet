@@ -3,7 +3,7 @@ using ConnectA.Domain.Entities;
 using ConnectA.Domain.Enums;
 using ConnectA.Domain.Exceptions;
 
-namespace ConnectA.Application.UseCases.Mentored;
+namespace ConnectA.Application.UseCases.Mentor;
 
 public class CreateLearningTrackUseCase(ILearningTrackRepository learningTrackRepository, ITrackStageRepository trackStageRepository, IUserRepository userRepository)
 {

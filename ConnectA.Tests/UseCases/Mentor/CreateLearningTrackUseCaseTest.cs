@@ -1,12 +1,12 @@
 ﻿using ConnectA.Application.Repositories;
-using ConnectA.Application.UseCases.Mentored;
+using ConnectA.Application.UseCases.Mentor;
 using ConnectA.Domain.Entities;
 using ConnectA.Domain.Exceptions;
 using ConnectA.Tests.Builders;
 using JetBrains.Annotations;
 using Moq;
 
-namespace ConnectA.Tests.UseCases.Mentored;
+namespace ConnectA.Tests.UseCases.Mentor;
 
 [TestSubject(typeof(CreateLearningTrackUseCase))]
 public class CreateLearningTrackUseCaseTest

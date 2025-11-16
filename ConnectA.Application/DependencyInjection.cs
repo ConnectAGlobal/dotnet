@@ -1,4 +1,4 @@
-﻿using ConnectA.Application.UseCases.Mentored;
+﻿using ConnectA.Application.UseCases.Mentor;
 using ConnectA.Application.UseCases.Users;
 using Microsoft.Extensions.DependencyInjection;
 
