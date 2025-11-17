@@ -24,6 +24,7 @@ public class LearningTrackUser
         UserId = userId;
         LearningTrackId = learningTrackId;
         Status = Status.IN_PROGRESS;
+        Score = 0;
         StartedAt = DateTime.UtcNow;
     }
 }
