@@ -11,4 +11,10 @@ internal class TrackStageRepository(OracleContext context) : ITrackStageReposito
         await context.TrackStages.AddRangeAsync(trackStages);
         await context.SaveChangesAsync();
     }
+    
+    public async Task CreateTrackStage(TrackStage trackStage)
+    {
+        await context.TrackStages.AddAsync(trackStage);
+        await context.SaveChangesAsync();
+    }
 }

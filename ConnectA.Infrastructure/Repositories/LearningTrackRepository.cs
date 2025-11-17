@@ -12,4 +12,9 @@ internal class LearningTrackRepository(OracleContext context) : ILearningTrackRe
         await context.SaveChangesAsync();
         return learningTrack;
     }
+    
+    public async Task<LearningTrack?> GetLearningTrackById(Guid learningTrackId)
+    {
+        return await context.LearningTracks.FindAsync(learningTrackId);
+    }
 }
