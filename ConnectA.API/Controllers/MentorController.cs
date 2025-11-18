@@ -19,7 +19,7 @@ public class MentorController(
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> CreateLearningTrack(LearningTrackRequestDTO dto)
+    public async Task<IActionResult> CreateLearningTrack([FromBody] LearningTrackRequestDTO dto)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
@@ -35,7 +35,7 @@ public class MentorController(
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> AddTrackStage(Guid learningTrackId, TrackStageRequestDTO dto)
+    public async Task<IActionResult> AddTrackStage([FromRoute] Guid learningTrackId, [FromBody] TrackStageRequestDTO dto)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);

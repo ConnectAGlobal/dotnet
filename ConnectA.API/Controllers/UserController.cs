@@ -30,12 +30,12 @@ public class UserController(
         return CreatedAtAction(nameof(CreateUser), new { id = response.Id }, response);
     }
     
-    [HttpPatch("/edit-profile")]
+    [HttpPatch("/edit-profile/{userId:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> EditProfile([FromQuery] Guid userId, [FromBody] ProfileRequestDTO dto)
+    public async Task<IActionResult> EditProfile([FromRoute] Guid userId, [FromBody] ProfileRequestDTO dto)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState);
