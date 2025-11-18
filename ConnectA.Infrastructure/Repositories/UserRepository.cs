@@ -1,5 +1,6 @@
 ﻿using ConnectA.Application.Repositories;
 using ConnectA.Domain.Entities;
+using ConnectA.Domain.Enums;
 using ConnectA.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,4 +24,19 @@ internal class UserRepository(OracleContext context) : IUserRepository
     {
         return await context.Users.FirstOrDefaultAsync(u => u.Email == email);
     }
+    
+    public async Task<ICollection<User>> GetAvailableJuniorsAsync()
+    {
+        return await context.Users
+            .Where(u => u.Type == UserType.JOVEM && u.MatchesAsSenior.Count == 0)
+            .ToListAsync();
+    }
+    
+    public async Task<ICollection<User>> GetAvailableSeniorsAsync()
+    {
+        return await context.Users
+            .Where(u => u.Type == UserType.SENIOR && u.MatchesAsJunior.Count == 0)
+            .ToListAsync();
+    }
+    
 }
