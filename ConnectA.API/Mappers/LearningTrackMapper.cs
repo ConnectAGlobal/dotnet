@@ -16,7 +16,6 @@ public class LearningTrackMapper
             dto.SeniorId,
             dto.TrackStages.Select(TrackStageMapper.ToEntity).ToList()
         );
-
         return learningTrack;
     }
     

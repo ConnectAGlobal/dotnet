@@ -22,7 +22,7 @@ public class TrackStageRequestValidator : AbstractValidator<TrackStageRequestDTO
 
         RuleFor(x => x.ActivityType)
             .NotEmpty().WithMessage("O tipo de atividade é obrigatório.")
-            .Must(type => type == "Video" || type == "Article" || type == "Quiz" || type == "Project")
+            .Must(type => type == "READING" || type == "CHALLENGE" || type == "REFLECTION" || type == "PROJECT")
             .WithMessage("ActivityType deve ser: Video, Article, Quiz ou Project.");
 
         RuleFor(x => x.Order)

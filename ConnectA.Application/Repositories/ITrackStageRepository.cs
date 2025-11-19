@@ -4,6 +4,5 @@ namespace ConnectA.Application.Repositories;
 
 public interface ITrackStageRepository
 {
-    Task CreateTrackStages(ICollection<TrackStage> trackStages);
     Task CreateTrackStage(TrackStage trackStage);
 }

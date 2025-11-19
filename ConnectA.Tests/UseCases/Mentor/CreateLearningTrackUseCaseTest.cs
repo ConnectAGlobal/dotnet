@@ -25,7 +25,6 @@ public class CreateLearningTrackUseCaseTest
 
         _createLearningTrackUseCase = new CreateLearningTrackUseCase(
             _learningTrackRepository.Object,
-            _trackStageRepository.Object,
             _userRepository.Object
         );
     }
@@ -79,7 +78,6 @@ public class CreateLearningTrackUseCaseTest
         var createdLearningTrack =  await _createLearningTrackUseCase.CreateLearningTrack(learningTrack);
         Assert.NotNull(createdLearningTrack);
         _learningTrackRepository.Verify(r => r.CreateLearningTrack(learningTrack), Times.Once);
-        _trackStageRepository.Verify(r => r.CreateTrackStages(learningTrack.Stages), Times.Once);
         Assert.NotNull(createdLearningTrack.Stages);
         Assert.Equal(createdLearningTrack.Id, createdLearningTrack.Stages.First().LearningTrackId);
 

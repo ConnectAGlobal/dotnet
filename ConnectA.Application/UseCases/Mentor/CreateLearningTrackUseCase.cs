@@ -5,7 +5,7 @@ using ConnectA.Domain.Exceptions;
 
 namespace ConnectA.Application.UseCases.Mentor;
 
-public class CreateLearningTrackUseCase(ILearningTrackRepository learningTrackRepository, ITrackStageRepository trackStageRepository, IUserRepository userRepository)
+public class CreateLearningTrackUseCase(ILearningTrackRepository learningTrackRepository, IUserRepository userRepository)
 {
     
     public async Task<LearningTrack> CreateLearningTrack(LearningTrack learningTrack)
@@ -18,8 +18,7 @@ public class CreateLearningTrackUseCase(ILearningTrackRepository learningTrackRe
             throw new InvalidSeniorRoleException(learningTrack.SeniorId);
         
         var createdLearningTrack = await learningTrackRepository.CreateLearningTrack(learningTrack);
-         
-        await trackStageRepository.CreateTrackStages(learningTrack.Stages);
+        
         return createdLearningTrack;
     }
 }

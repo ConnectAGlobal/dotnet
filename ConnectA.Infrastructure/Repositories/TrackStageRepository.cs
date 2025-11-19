@@ -6,11 +6,6 @@ namespace ConnectA.Infrastructure.Repositories;
 
 internal class TrackStageRepository(OracleContext context) : ITrackStageRepository
 {
-    public async Task CreateTrackStages(ICollection<TrackStage> trackStages)
-    {
-        await context.TrackStages.AddRangeAsync(trackStages);
-        await context.SaveChangesAsync();
-    }
     
     public async Task CreateTrackStage(TrackStage trackStage)
     {
