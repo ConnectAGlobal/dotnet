@@ -7,10 +7,6 @@ public class TrackStageRequestValidator : AbstractValidator<TrackStageRequestDTO
 {
     public TrackStageRequestValidator()
     {
-        RuleFor(x => x.LearningTrackId)
-            .NotEqual(Guid.Empty)
-            .When(x => x.LearningTrackId.HasValue)
-            .WithMessage("O LearningTrackId, se informado, não pode ser Guid.Empty.");
 
         RuleFor(x => x.Title)
             .NotEmpty().WithMessage("O título é obrigatório.")
@@ -22,8 +18,8 @@ public class TrackStageRequestValidator : AbstractValidator<TrackStageRequestDTO
 
         RuleFor(x => x.ActivityType)
             .NotEmpty().WithMessage("O tipo de atividade é obrigatório.")
-            .Must(type => type == "READING" || type == "CHALLENGE" || type == "REFLECTION" || type == "PROJECT")
-            .WithMessage("ActivityType deve ser: Video, Article, Quiz ou Project.");
+            .Must(type => type is "READING" or "CHALLENGE" or "REFLECTION" or "PROJECT")
+            .WithMessage("ActivityType deve ser: READING, CHALLENGE, REFLECTION ou PROJECT.");
 
         RuleFor(x => x.Order)
             .GreaterThan(0).WithMessage("A ordem deve ser maior que zero.");

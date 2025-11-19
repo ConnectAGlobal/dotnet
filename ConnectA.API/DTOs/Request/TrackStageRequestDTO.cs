@@ -1,7 +1,6 @@
 ﻿namespace ConnectA.API.DTOs.Request;
 
 public class TrackStageRequestDTO(
-    Guid? learningTrackId,
     string title,
     string description,
     string activityType,
@@ -9,7 +8,6 @@ public class TrackStageRequestDTO(
     int estimatedDuration,
     string? resourceLink)
 {
-    public Guid? LearningTrackId { get; init; } = learningTrackId;
     public string Title { get; init; } = title;
     public string Description { get; init; } = description;
     public string ActivityType { get; init; } = activityType;
