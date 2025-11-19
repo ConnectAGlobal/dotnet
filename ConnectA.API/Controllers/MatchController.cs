@@ -7,7 +7,7 @@ namespace ConnectA.API.Controllers;
 [ApiController]
 [Route("api/v{version:apiVersion}/matchs")]
 [Produces("application/json")]
-[ApiVersion(1.0)]
+[ApiVersion(2.0)]
 public class MatchController(
     GenerateMatchUseCase generateMatchUseCase
     ) : ControllerBase

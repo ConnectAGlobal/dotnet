@@ -14,9 +14,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
         var configs = builder.Configuration.Get<Settings>();
-
-        // Configure basic logging providers (Console + Debug). For structured logging
-        // and distributed tracing consider adding Serilog and OpenTelemetry packages.
+        
         builder.Logging.ClearProviders();
         builder.Logging.AddConsole();
         builder.Logging.AddDebug();
@@ -38,7 +36,12 @@ public class Program
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+            app.UseSwaggerUI(ui =>
+                {
+                    ui.SwaggerEndpoint("/swagger/v1/swagger.json",  "MottuGrid.API v1");
+                    ui.SwaggerEndpoint("/swagger/v2/swagger.json",  "MottuGrid.API v2");
+                }
+            );
         }
 
         app.UseHttpsRedirection();
