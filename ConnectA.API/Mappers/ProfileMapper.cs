@@ -11,8 +11,11 @@ public class ProfileMapper
         return new Profile(dto.Biography, dto.Skills, dto.Experience, dto.Objectives, dto.Location, dto.Lenguages);
     }
     
-    public static ProfileResponseDTO ToResponse(Profile profile)
+    public static ProfileResponseDTO? ToResponse(Profile? profile)
     {
+        if (profile == null)
+            return null;
+
         return new ProfileResponseDTO(
             profile.Id,
             profile.UserId,

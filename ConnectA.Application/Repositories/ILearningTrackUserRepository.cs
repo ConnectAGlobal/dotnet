@@ -10,4 +10,8 @@ public interface ILearningTrackUserRepository
     
     Task<(IEnumerable<LearningTrackUser> Items, int TotalCount)>
         GetFollowedLearningTracksPagedAsync(Guid userId, int page, int pageSize);
+    
+    Task<LearningTrackUser?> GetByIdAsync(Guid id);
+    Task UpdateAsync(LearningTrackUser learningTrackUser);
+    Task DeleteAsync(Guid id);
 }

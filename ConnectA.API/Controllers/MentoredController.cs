@@ -5,6 +5,9 @@ using ConnectA.API.Hateoas;
 using ConnectA.API.Mappers;
 using ConnectA.Application.Pagination;
 using ConnectA.Application.UseCases.Mentored;
+using ConnectA.API.DTOs.Request;
+using ConnectA.Domain.Enums;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ConnectA.API.Controllers;
@@ -15,7 +18,9 @@ namespace ConnectA.API.Controllers;
 [ApiVersion(1.0)]
 public class MentoredController(
     FollowLearningTrackUseCase followLearningTrackUseCase, 
-    FollowLearningTrackListUseCase followLearningTrackListUseCase
+    FollowLearningTrackListUseCase followLearningTrackListUseCase,
+    UpdateFollowUseCase updateFollowUseCase,
+    DeleteFollowUseCase deleteFollowUseCase
     ) : ControllerBase
 {
     [HttpPost("learning-tracks/follow")]
@@ -53,5 +58,30 @@ public class MentoredController(
         response.Links = PaginatedLinkBuilder.BuildPaginatedLinks("GetFollowedLearningTracks", "mentees", Url, page, pageSize, response.TotalPages);
 
         return Ok(response);
+    }
+
+    [HttpPut("learning-tracks/follow/{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> UpdateFollow([FromRoute] Guid id, [FromBody] LearningTrackUserUpdateRequestDTO dto)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest(ModelState);
+
+        var updated = await updateFollowUseCase.Execute(id, dto.Status, dto.Score, dto.CompletedAt);
+        var response = LearningTrackUserMapper.ToResponse(updated);
+        return Ok(response);
+    }
+
+    [HttpDelete("learning-tracks/follow/{id:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> DeleteFollow([FromRoute] Guid id)
+    {
+        await deleteFollowUseCase.Execute(id);
+        return NoContent();
     }
 }

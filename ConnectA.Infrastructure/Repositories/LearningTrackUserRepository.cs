@@ -2,6 +2,7 @@
 using ConnectA.Domain.Entities;
 using ConnectA.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using ConnectA.Domain.Exceptions;
 
 namespace ConnectA.Infrastructure.Repositories;
 
@@ -34,5 +35,26 @@ internal class LearningTrackUserRepository(OracleContext context) : ILearningTra
             .ToListAsync();
 
         return (items, totalCount);
+    }
+
+    public async Task<LearningTrackUser?> GetByIdAsync(Guid id)
+    {
+        return await context.LearningTrackUsers.FindAsync(id);
+    }
+
+    public async Task UpdateAsync(LearningTrackUser learningTrackUser)
+    {
+        context.LearningTrackUsers.Update(learningTrackUser);
+        await context.SaveChangesAsync();
+    }
+
+    public async Task DeleteAsync(Guid id)
+    {
+        var entity = await context.LearningTrackUsers.FindAsync(id);
+        if (entity == null)
+            throw new ArgumentException("Follow not found.");
+
+        context.LearningTrackUsers.Remove(entity);
+        await context.SaveChangesAsync();
     }
 }

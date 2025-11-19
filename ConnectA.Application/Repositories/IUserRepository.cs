@@ -9,4 +9,6 @@ public interface IUserRepository
     Task<User?> GetUserByEmail(string email);
     Task<ICollection<User>> GetAvailableJuniorsAsync();
     Task<ICollection<User>> GetAvailableSeniorsAsync();
+    Task<ICollection<User>> GetAllAsync();
+    Task DeleteUserAsync(Guid userId);
 }

@@ -41,7 +41,6 @@ public class ErrorHandlingMiddleware(RequestDelegate next)
 
             default:
                 statusCode = StatusCodes.Status500InternalServerError;
-                message = "An unexpected error occurred.";
                 break;
         }
 

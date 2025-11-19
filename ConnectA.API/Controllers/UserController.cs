@@ -1,5 +1,6 @@
 ﻿using Asp.Versioning;
 using ConnectA.API.DTOs.Request;
+using System.Linq;
 using ConnectA.API.Mappers;
 using ConnectA.Application.UseCases.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -12,7 +13,9 @@ namespace ConnectA.API.Controllers;
 [ApiVersion(1.0)]
 public class UserController(
         CreateUserUseCase createUserUseCase,
-        EditProfileUseCase editProfileUseCase
+        EditProfileUseCase editProfileUseCase,
+        GetAllUsersUseCase getAllUsersUseCase,
+        DeleteUserUseCase deleteUserUseCase
     ) : ControllerBase
 {
     [HttpPost]
@@ -44,5 +47,25 @@ public class UserController(
         var updatedUser = await editProfileUseCase.EditProfile(userId, profile);
         var response = UserMapper.ToResponse(updatedUser);
         return Ok(response);
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> GetAll()
+    {
+        var users = await getAllUsersUseCase.Execute();
+        var response = users.Select(UserMapper.ToResponse);
+        return Ok(response);
+    }
+
+    [HttpDelete("{userId:guid}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+    public async Task<IActionResult> Delete([FromRoute] Guid userId)
+    {
+        await deleteUserUseCase.Execute(userId);
+        return NoContent();
     }
 }

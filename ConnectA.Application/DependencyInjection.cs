@@ -12,7 +12,11 @@ public static class DependencyInjection
     public static IServiceCollection AddUseCases(this IServiceCollection services)
     {
         services.AddScoped<CreateUserUseCase>();
+        services.AddScoped<GetAllUsersUseCase>();
+        services.AddScoped<DeleteUserUseCase>();
         services.AddScoped<CreateLearningTrackUseCase>();
+        services.AddScoped<UpdateFollowUseCase>();
+        services.AddScoped<DeleteFollowUseCase>();
         services.AddScoped<GenerateMatchUseCase>();
         services.AddScoped<AddTrackStageUseCase>();
         services.AddScoped<FollowLearningTrackListUseCase>();
