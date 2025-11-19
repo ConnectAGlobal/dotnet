@@ -1,4 +1,7 @@
-﻿using ConnectA.Application.UseCases.Mentor;
+﻿using ConnectA.Application.Services;
+using ConnectA.Application.UseCases.Matching;
+using ConnectA.Application.UseCases.Mentor;
+using ConnectA.Application.UseCases.Mentored;
 using ConnectA.Application.UseCases.Users;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -10,6 +13,12 @@ public static class DependencyInjection
     {
         services.AddScoped<CreateUserUseCase>();
         services.AddScoped<CreateLearningTrackUseCase>();
+        services.AddScoped<GenerateMatchUseCase>();
+        services.AddScoped<AddTrackStageUseCase>();
+        services.AddScoped<FollowLearningTrackListUseCase>();
+        services.AddScoped<FollowLearningTrackUseCase>();
+        services.AddScoped<EditProfileUseCase>();
+        services.AddScoped<MatchingMLService>();
         return services;
     }
 }
