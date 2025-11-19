@@ -1,17 +1,28 @@
 ﻿using ConnectA.Domain.Exceptions;
+using Microsoft.Extensions.Logging;
 
 namespace ConnectA.API.Middleware;
 
-public class ErrorHandlingMiddleware(RequestDelegate next)
+public class ErrorHandlingMiddleware
 {
+    private readonly RequestDelegate _next;
+    private readonly ILogger<ErrorHandlingMiddleware> _logger;
+
+    public ErrorHandlingMiddleware(RequestDelegate next, ILogger<ErrorHandlingMiddleware> logger)
+    {
+        _next = next;
+        _logger = logger;
+    }
+
     public async Task Invoke(HttpContext context)
     {
         try
         {
-            await next(context);
+            await _next(context);
         }
         catch (Exception ex)
         {
+            _logger.LogError(ex, "Unhandled exception while processing request {Method} {Path}", context.Request.Method, context.Request.Path);
             await HandleExceptionAsync(context, ex);
         }
     }
@@ -41,6 +52,7 @@ public class ErrorHandlingMiddleware(RequestDelegate next)
 
             default:
                 statusCode = StatusCodes.Status500InternalServerError;
+                message = "An unexpected error occurred.";
                 break;
         }
 

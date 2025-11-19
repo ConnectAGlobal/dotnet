@@ -15,6 +15,12 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
         var configs = builder.Configuration.Get<Settings>();
 
+        // Configure basic logging providers (Console + Debug). For structured logging
+        // and distributed tracing consider adding Serilog and OpenTelemetry packages.
+        builder.Logging.ClearProviders();
+        builder.Logging.AddConsole();
+        builder.Logging.AddDebug();
+
         builder.Services.AddInfrastructure(configs); 
         builder.Services.AddHealthServices(configs.ConnectionStrings);
         builder.Services.AddUseCases();
