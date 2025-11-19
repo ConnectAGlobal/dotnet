@@ -11,7 +11,7 @@ internal class LearningTrackUserRepository(OracleContext context) : ILearningTra
     public async Task<LearningTrackUser?> GetByMentoredAndTrackIdsAsync(Guid mentoredId, Guid trackId)
     {
         return await context.LearningTrackUsers
-            .FindAsync(mentoredId, trackId);
+            .FirstOrDefaultAsync(x => x.UserId == mentoredId && x.LearningTrackId == trackId);
     }
 
     public async Task AddAsync(LearningTrackUser learningTrackUser)

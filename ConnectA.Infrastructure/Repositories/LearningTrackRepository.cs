@@ -15,6 +15,7 @@ internal class LearningTrackRepository(OracleContext context) : ILearningTrackRe
     
     public async Task<LearningTrack?> GetLearningTrackById(Guid learningTrackId)
     {
-        return await context.LearningTracks.FindAsync(learningTrackId);
+        return await context.LearningTracks.
+            FindAsync(learningTrackId);
     }
 }

@@ -4,6 +4,6 @@ namespace ConnectA.API.DTOs.Request;
 
 public class LearningTrackUserRequestDTO(Guid userId, Guid learningTrackId)
 {
-    public Guid UserId { get; set; } = userId;
-    public Guid LearningTrackId { get; set; } = learningTrackId;
+    public Guid UserId { get; init; } = userId;
+    public Guid LearningTrackId { get; init; } = learningTrackId;
 }

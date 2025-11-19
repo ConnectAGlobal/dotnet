@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ConnectA.API.Controllers;
 
 [ApiController]
-[Route("api/v{version:apiVersion}/mentees")]
+[Route("api/v{version:apiVersion}/mentees/learning-tracks")]
 [Produces("application/json")]
 [ApiVersion(1.0)]
 public class MentoredController(
@@ -23,7 +23,7 @@ public class MentoredController(
     DeleteFollowUseCase deleteFollowUseCase
     ) : ControllerBase
 {
-    [HttpPost("learning-tracks/follow")]
+    [HttpPost("follow")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -38,7 +38,7 @@ public class MentoredController(
         return CreatedAtAction(nameof(FollowLearningTrack), new { id = createdLearningTrackUser.Id }, responseDto);
     }
     
-    [HttpGet("learning-tracks/followed")]
+    [HttpGet("followed")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetFollowedLearningTracks(
         [FromQuery] Guid userId,
@@ -60,7 +60,7 @@ public class MentoredController(
         return Ok(response);
     }
 
-    [HttpPut("learning-tracks/follow/{id:guid}")]
+    [HttpPut("follow/{id:guid}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -75,7 +75,7 @@ public class MentoredController(
         return Ok(response);
     }
 
-    [HttpDelete("learning-tracks/follow/{id:guid}")]
+    [HttpDelete("follow/{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status500InternalServerError)]
