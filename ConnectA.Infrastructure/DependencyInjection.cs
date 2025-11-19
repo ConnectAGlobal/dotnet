@@ -26,6 +26,8 @@ public static class DependencyInjection
         services.AddScoped<IProfileRepository, ProfileRepository>();
         services.AddScoped<ILearningTrackRepository, LearningTrackRepository>();
         services.AddScoped<ITrackStageRepository, TrackStageRepository>();
+        services.AddScoped<ILearningTrackUserRepository, LearningTrackUserRepository>();
+        services.AddScoped<IMentorshipMatchRepository, MentorshipMatchRepository>();
         return services;
     }
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, Settings settings)
