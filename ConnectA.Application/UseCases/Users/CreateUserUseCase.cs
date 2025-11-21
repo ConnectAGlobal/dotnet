@@ -14,7 +14,6 @@ public class CreateUserUseCase(IUserRepository userRepository, IProfileRepositor
            throw new UserAlreadyExistsException(user.Email);  
         }
         var userCreated = await userRepository.CreateUser(user);
-        await profileRepository.CreateProfileAsync(user.Profile);
         return userCreated;
     }
 }

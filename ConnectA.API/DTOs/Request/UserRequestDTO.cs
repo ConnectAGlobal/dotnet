@@ -6,5 +6,5 @@ public class UserRequestDTO(string name, string email, string password, string t
     public string Email { get; init; } = email;
     public string Password { get; init; } = password;
     public string Type { get; init; } = type;
-    public ProfileRequestDTO Profile = profile;
+    public ProfileRequestDTO Profile { get; init; }= profile;
 }
