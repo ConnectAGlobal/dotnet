@@ -69,3 +69,99 @@ ConnectA facilita encontros de aprendizagem mútuos: os seniores transformam sua
   Notes:
   - Onde aplicável, substitua `{id}` ou `{userId}` por GUIDs no formato esperado pela API.
 
+**Test Payloads**
+
+- **`create_user.json`**
+
+```json
+{
+	"name": "João Silva",
+	"email": "joao.silva@example.com",
+	"password": "Password123!",
+	"type": "JOVEM",
+	"profile": {
+		"biography": "Recém-formado em Ciência da Computação com interesse em IA ética.",
+		"skills": "Lógica, Git, Python",
+		"experience": "Estágios em desenvolvimento web",
+		"objectives": "Aprender sobre carreiras do futuro e práticas responsáveis em IA",
+		"location": "São Paulo, BR",
+		"lenguages": "PT,EN"
+	}
+}
+```
+
+```json
+{
+	"name": "João Silva",
+	"email": "joao.silv@example.com",
+	"password": "Password123!",
+	"type": "SENIOR",
+	"profile": {
+		"biography": "Recém-formado em Ciência da Computação com interesse em IA ética.",
+		"skills": "Lógica, Git, Python",
+		"experience": "Estágios em desenvolvimento web",
+		"objectives": "Aprender sobre carreiras do futuro e práticas responsáveis em IA",
+		"location": "São Paulo, BR",
+		"lenguages": "PT,EN"
+	}
+}
+```
+
+- **`edit_profile.json`**
+
+```json
+{
+	"biography": "Atualização: experiência em projetos pessoais e contribuição em open-source.",
+	"skills": "Lógica, Git, Python, SQL",
+	"experience": "Estágios em desenvolvimento web; projetos pessoais em data ethics",
+	"objectives": "Trabalhar com sustentabilidade e IA responsável",
+	"location": "São Paulo, BR",
+	"lenguages": "PT,EN,ES"
+}
+```
+
+- **`create_learning_track.json`**
+
+```json
+{
+	"name": "Introdução à Ética em IA",
+	"description": "Conceitos, frameworks e estudos de caso para tomada de decisão ética em sistemas inteligentes.",
+	"level": "Beginner",
+	"seniorId": "11111111-1111-1111-1111-111111111111",
+	"trackStages": [
+		{
+			"title": "Leitura: Fundamentos de Ética",
+			"description": "Artigos introdutórios e leituras essenciais.",
+			"activityType": "READING",
+			"order": 1,
+			"estimatedDuration": 60
+		},
+		{
+			"title": "Desafio: Identificando vieses",
+			"description": "Exercício prático para identificar vieses em um dataset simples.",
+			"activityType": "CHALLENGE",
+			"order": 2,
+			"estimatedDuration": 120
+		}
+	]
+}
+```
+
+- **`create_follow.json`**
+
+```json
+{
+	"userId": "22222222-2222-2222-2222-222222222222",
+	"learningTrackId": "33333333-3333-3333-3333-333333333333"
+}
+```
+
+- **`update_follow.json`**
+
+```json
+{
+	"status": 1,
+	"score": 4.5,
+	"completedAt": null
+}
+```
