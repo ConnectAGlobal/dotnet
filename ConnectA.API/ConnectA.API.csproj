@@ -21,12 +21,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ConnectA.Application\ConnectA.Application.csproj" />
       <ProjectReference Include="..\ConnectA.Domain\ConnectA.Domain.csproj" />
       <ProjectReference Include="..\ConnectA.Infrastructure\ConnectA.Infrastructure.csproj" />
