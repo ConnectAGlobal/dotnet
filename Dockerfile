@@ -37,4 +37,4 @@ COPY --from=build /app/publish .
 EXPOSE 8080
 
 # Comando de execução
-ENTRYPOINT ["dotnet", "ConnectA.Api.dll"]
+ENTRYPOINT ["dotnet", "ConnectA.API.dll"]
